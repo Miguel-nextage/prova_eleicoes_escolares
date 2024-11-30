@@ -34,7 +34,7 @@ escolas_alunos = {
 
     "1": [
         "Max Cavalera",
-        "Tooi Sakebi",
+        "Jasmine",
         "Lain",
         "Bruno Reis"],
         
