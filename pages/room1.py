@@ -5,14 +5,88 @@ from io import BytesIO
 import time
 import webbrowser
 from time import sleep
+from PIL import Image
+ 
 
-# Configuração inicial da página
+#cores
 
-st.set_page_config(page_title="Sistema de Votação com Gráfico", layout="centered")
+st.markdown("""
+        <style>
+            /*Estilo para o título */
+            h1 {
+                color: #FFFCCC;
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+        .stButton>button {
+            width: 260px;
+            background-color: green;
+            color: white;     
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            margin: 0 auto;
+
+        }
+
+        .stButton>button:hover {
+            background-color: darkred;  /* Cor do botão ao passar o mouse */
+        }
+        .bt1 >button {
+            background-color: #777666;  /* Cor do botão 1 */
+            color: white;  /* Cor do texto */
+            font-size: 18px;
+            border-radius: 10px;
+            padding: 10px 20px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .bt1 > button:hover {
+            background-color: #777666;  /* Cor ao passar o mouse para o botão 1 */
+        }
+            
+             .candidato > button {
+            background-color: #777555;  /* cor para o botao de resultado */
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            border: none;
+            font-size: 18px;
+        }
+
+        .button_candidato2 > button:hover {
+            background-color: #0000FF;  /* Cor ao passar o mouse para o botão do Candidato 2 */
+        }
+
+        .col5
+            {
+
+            justify-content: center;
+            align: center;
+            
+            }
+
+        </style>
+            
+    """, unsafe_allow_html=True)
+
+# Configuração inicial da págin
+
 
 # Títulos e descrição
 st.title("🗳️ Sistema de Votação")
+
 st.write("Vote com cuidado! Veja com atenção o discurso de cada um, e então vote. Você só pode votar uma vez!")
+
+st.write("")
+st.write("")
+st.write("")
+
 
 # Variáveis de estado para armazenar votos
 if "votos_candidato1" not in st.session_state:
@@ -59,7 +133,13 @@ with col5:
 with col6:
     st.image("https://media.tenor.com/UPiEUVO2Q04AAAAe/mulch-mulch-dog.png", width=160)
 
-if st.button("Ver resultado"):
-    st.success("Transferindo")
-    sleep(0.5)
-    st.switch_page("pages/resultado.py")
+#cofiguraçaodo botao resultado
+
+
+
+#o botao agora
+
+if st.button("Resultado", key="candidato", help="Ver resultado das eleições", use_container_width=True):
+            st.session_state.votos_candidato2 += 1
+            st.session_state.ja_votou = True
+            st.success("Seu voto foi registrado para o Candidato 2!")
